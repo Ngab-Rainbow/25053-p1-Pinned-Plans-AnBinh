@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulletin plans📌</title>
+    <link rel="stylesheet" href="select-workplace.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&family=Doppio+One&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Rubik:ital,wght@0,300..900;1,300..900&family=Space+Grotesk:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <a href="../main-page/main-page.html" class="main-page"><svg xmlns="http://www.w3.org/2000/svg" height="30px"
+                viewBox="0 -960 960 960" width="30px" fill="#3C3C3C">
+                <path
+                    d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
+            </svg></a>
+        <p2 class="page-title">Bulletin plans📌</p2>
+    </header>
+
+    <div class="selection-area">
+        <div class="nav-bar">
+            <div class="href-room">
+                <a href="../account-center/account-center.html" class="page">Account center</a>
+            </div>
+            <div class="href-room">
+                <a href="../plans-management/plans-management.html" class="page  ">Plans management</a>
+            </div>
+            <div class="href-room">
+                <a href="../select-workplace/select-workplace.html" class="page current-page">Workplace</a>
+            </div>
+        </div>
+        <div class="selection-container">
+            <div class="create-workplace">
+                <svg xmlns="http://www.w3.org/2000/svg" height="250px" viewBox="0 -960 960 960" width="250px"
+                    fill="gray">
+                    <path
+                        d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160Zm40 200q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+                </svg>
+                <p class="create-instruction">Click here to create new workplace</p>
+            </div>
+            <p class="area-division"> OR </p>
+            <div class="workplace-selection">
+                <p class="selection-instruction"> Choose a workplace in your storage </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="generate-new-workplace">
+        <div class="plan-information">
+        <div>
+            <p>Name:</p>
+            <input type="text" class="planName">
+        </div>
+        <div class="color-chosen">
+            <p>Background color:</p>
+            <select class="background-type">
+                <option>Solid color</option>
+                <option>Image(demo)</option>
+            </select>
+            <input type="url" class="background-image" placeholder="Paste you image URL here">
+            <input type="color" class="background-color" onchange="showHex();">
+            </select>
+        </div>
+        <div class="color-chosen">
+            <p>Border color:</p>
+            <select class="border-requirement">
+                <option>None</option>
+                <option>Border</option>
+            </select>
+            <input type="color" class="border" onchange="showHex();">
+        </div>
+        <div>
+            <p>Ratio / scale:</p>
+            <select class="ratio">
+                <option>1/1</option>
+                <option>4/3</option>
+                <option>3/4</option>
+                <option>3/2</option>
+                <option>2/3</option>
+            </select>
+        </div>
+        <div>
+            <p>Description:</p>
+            <input type="text" class="description">
+        </div>
+        <button class="close">X</button>
+        <button class="reset btn">Reset</button>
+        <button class="generate btn">Create</button>
+        </div>
+    <div class = "preview-board">
+        
+    </div>
+    </div>
+
+    <script type="module" src="select-workplace.js"></script>
+</body>
+
+</html>
