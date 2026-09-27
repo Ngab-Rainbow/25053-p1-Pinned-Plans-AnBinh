@@ -547,6 +547,9 @@ h3 {
     color: #c81e1e;
     font-weight: 650;
 }
+.avatar-guide{
+    width: 22rem;
+}
 
 @media (max-width: 900px) {
     .account-area {
@@ -1116,9 +1119,31 @@ header {
         display: grid;
         grid-template-columns: max-content minmax(0, 1fr);
     }
+    .avatar-guide {
+        margin-bottom: 1rem;
+        width: 95%;
+    }
+    .log-out-btn,
+    .change-password-btn,
+    .adjust-btn,
+    .finish-btn {
+        width: calc(100% - 0.8rem);
+        min-height: 2.85rem;
+        margin: 0.48rem auto;
+        margin-left: 0.4rem;
+        border-radius: 0.65rem;
+        font-size: 1rem;
+    }
+    .log-out-btn{
+        margin-top: 1rem;
+    }
 }
 
 @media (max-width: 600px) {
+    .avatar-guide {
+        width: 28rem;
+    }
+
     .info-container > div:not(:has(> div)),
     .info-container > div:has(> div),
     .info-container > div > div {
