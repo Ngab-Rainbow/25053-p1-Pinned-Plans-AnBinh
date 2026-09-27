@@ -24,12 +24,7 @@ const inputName = document.querySelector(".input-name")
 const inputNationality = document.querySelector(".input-nationality")
 const inputAge = document.querySelector(".input-age")
 const inputGender = document.querySelector(".gender-selection")
-const inputAvatar = document.getElementById("input-avatar")
-inputAvatar.addEventListener("change", () => {
-    let newAvatar = URL.createObjectURL(inputAvatar.files[0])
-    avatar.setAttribute("src", String(newAvatar))
-})
-
+const inputAvatar = document.querySelector(".avatar-guide")
 const accountArea = document.querySelector(".account-area")
 
 function setPlaceholder(element, inputElement) {
@@ -84,6 +79,7 @@ finishBtn.addEventListener("click", () => {
             nationality.textContent = inputNationality.value;
             age.textContent = inputAge.value;
             gender.textContent = inputGender.value;
+            if (inputAvatar.value) avatar.setAttribute("src",inputAvatar.value)
             let newAvatar = avatar.getAttribute("src")
             const fixedUserData = new dataUsersManagement(currentAcount.email, inputNationality.value, inputAge.value, inputGender.value)
             fixedUserData.setUserData(userInfo, currentAcount, inputName.value, newAvatar)

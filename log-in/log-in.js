@@ -1,6 +1,7 @@
 import basicAccountManagement from "../JS/accounts-management.js"
 import dataUsersManagement from "../JS/users-data-management.js"
 import verify from "../JS/verify-account.js"
+import plansBriefManagement from "../JS/brief-plans-information.js"
 verify.verifyGuest()
 const settingsContainer=document.querySelector(".settings-container")
 const interactionBox = document.querySelector(".interaction-close")
@@ -46,6 +47,8 @@ function checkInputError() {
                 setAccount.setCurrentAccount()   
                 const userData = new dataUsersManagement(c.email)
                 userData.setCurrentUserData()
+                const currentPlans = new plansBriefManagement(c.email)
+                currentPlans.setUserPlans()
                 return;
     }}})
     if (emailError) {
