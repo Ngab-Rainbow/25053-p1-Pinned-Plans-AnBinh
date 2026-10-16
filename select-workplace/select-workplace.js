@@ -87,16 +87,18 @@ typeOfBackground.addEventListener("change", () => {
     if (typeOfBackground.value === "Image(demo)") {
         backgroundColor.style.display = "none"
         backgroundImage.style.display = "block"
-        backgroundImage.addEventListener("keyup", () => {
+        backgroundImage.onkeyup= () => {
             previewBoard.style.backgroundImage = `url(${backgroundImage.value})`
             background = backgroundImage.value
-        })
+        }
         return
     }
     if (typeOfBackground.value === "Solid color") {
         backgroundColor.style.display = "block"
         backgroundImage.style.display = "none"
-
+        background = backgroundColor.value;
+        previewBoard.style.backgroundImage = "none";
+        previewBoard.style.backgroundColor = backgroundColor.value;
         return
     }
 })
