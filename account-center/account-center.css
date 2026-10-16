@@ -78,6 +78,7 @@ header {
     border-right: 0.6px solid gray;
     border-left: 0.6px solid gray;
 }
+
 .page {
     text-align: center;
     text-decoration: none;
@@ -1280,5 +1281,30 @@ header {
     .recheck .btn {
         min-height: 44px;
         font-size: 1rem;
+    }
+}
+
+/* =========================================================
+   DESKTOP / LARGE-SCREEN POSITION FIX
+   Keep the action buttons aligned to the right edge of the
+   centered account card instead of to the browser viewport.
+   ========================================================= */
+:root {
+    --account-layout-width: min(85rem, calc(100vw - 2rem));
+    --account-layout-side-gap: calc((100vw - var(--account-layout-width)) / 2);
+}
+
+@media (min-width: 901px) {
+    .adjust-btn,
+    .finish-btn {
+        right: var(--account-layout-side-gap);
+    }
+
+    .change-password-btn {
+        right: calc(var(--account-layout-side-gap) + 10rem);
+    }
+
+    .log-out-btn {
+        right: calc(var(--account-layout-side-gap) + 23.7rem);
     }
 }

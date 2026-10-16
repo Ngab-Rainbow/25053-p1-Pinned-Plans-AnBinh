@@ -1,6 +1,7 @@
 import data from "../JS/mock-data.js"
 const rawCurrentUser = localStorage.getItem("usersData")
 const currentUser = JSON.parse(rawCurrentUser)
+
 class dataUsersManagement{
     constructor(email,nationality="none",age='18',gender='Secret',total=0) {
         this.email=email;
@@ -32,7 +33,7 @@ class dataUsersManagement{
         const rawUsersData=localStorage.getItem("usersData")
         const usersData = JSON.parse(rawUsersData)
         userInfo = {email:this.email,nationality:this.nationality,age:this.age,gender:this.gender,total:plansCount,avatar:`${newAvatar}`}
-        for (let i = 0; i<rawAccounts.length;i++) {
+        for (let i = 0; i<accounts.length;i++) {
             if (usersData[i].email===userInfo.email) {
                 usersData[i]=userInfo
                 currentAccount.name=inputName

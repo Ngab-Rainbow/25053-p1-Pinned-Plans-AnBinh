@@ -96,7 +96,9 @@ typeOfBackground.addEventListener("change", () => {
     if (typeOfBackground.value === "Solid color") {
         backgroundColor.style.display = "block"
         backgroundImage.style.display = "none"
-
+        background = backgroundColor.value;
+        previewBoard.style.backgroundImage = "none";
+        previewBoard.style.backgroundColor = backgroundColor.value;
         return
     }
 })
