@@ -1,5 +1,6 @@
 const rawPlans = localStorage.getItem("plans")
 const plans = JSON.parse(rawPlans)
+import planNotesManagement from "../JS/plan-notes-management.js"
 class  plansBriefManagement {
     constructor(email, planName, desc, date, background, border,ratio) {
         this.email=email
@@ -44,7 +45,7 @@ class  plansBriefManagement {
         localStorage.setItem("currentUserPlans",JSON.stringify(currentUserPlans))
         localStorage.setItem("plans",JSON.stringify(plans))
         localStorage.setItem("currentPlan",JSON.stringify(currentPlan))
-        window.location.href = "../plans-management/plans-management.html"
+        window.location.href = "../function-page/function-page.html"
         const rawUsersData = localStorage.getItem("usersData")
         const rawUserData = localStorage.getItem("currentUserData")
         const usersData = JSON.parse(rawUsersData)
@@ -58,6 +59,14 @@ class  plansBriefManagement {
         });
         localStorage.setItem("currentUserData",JSON.stringify(CurrentUserData))
         localStorage.setItem("usersData",JSON.stringify(usersData))
+        const generateNotesData = new planNotesManagement(`${this.email}${index}`)
+        const newPlanLinks = {ID:`${this.email}${index}`,links:[]}
+        const rawPlansLinks = localStorage.getItem("plansLinks")
+        const plansLinks = JSON.parse(rawPlansLinks)
+        plansLinks.push(newPlanLinks)
+        localStorage.setItem('currentPlanLinks',JSON.stringify(newPlanLinks))
+        localStorage.setItem("plansLinks",JSON.stringify(plansLinks))
+        generateNotesData.generatePlanNotesData()
     }
     adjustPlanInfo(ID,name,desc,updatedDate) {
         const rawPlans = localStorage.getItem('plans')
@@ -90,17 +99,51 @@ class  plansBriefManagement {
         const newCurrentPlans = currentUserPlans.filter(plan=>plan.ID!=ID)
         localStorage.setItem("plans",JSON.stringify(newPlans))
         localStorage.setItem("currentUserPlans",JSON.stringify(newCurrentPlans))
+        const rawCurrentPlan = localStorage.getItem("currentPlan")
+        if (rawCurrentPlan) {
+            const currentPlan = JSON.parse(rawCurrentPlan)
+            if (currentPlan.ID===ID){
+                localStorage.setItem("currentPlan",'')
+            }
+        }
+        const removePlanNotes = new planNotesManagement()
+        removePlanNotes.removePlanNotes(ID)
         const rawUsersData = localStorage.getItem("usersData")
         const rawUserData = localStorage.getItem("currentUserData")
         const usersData = JSON.parse(rawUsersData)
         const CurrentUserData = JSON.parse(rawUserData)
-        CurrentUserData.total = currentUserPlans.length
+        CurrentUserData.total = newCurrentPlans.length
         usersData.forEach( user=> {
             if (user.email === CurrentUserData.email) {
-                user.total = currentUserPlans.length
+                user.total = newCurrentPlans.length
                 return;
             }
         });
+        const rawPlansLinks = localStorage.getItem("plansLinks")
+        const rawPlansNotes = localStorage.getItem("plansNotes")
+        let plansLinks = JSON.parse(rawPlansLinks)
+        plansLinks = plansLinks.filter(link=>link.ID!=ID)
+        let plansNotes = JSON.parse(rawPlansNotes)
+        plansNotes=plansNotes.filter(link=>link.ID!=ID)
+        const rawCurrentLinks = localStorage.getItem("currentPlanLinks")
+        if (rawCurrentLinks) {
+            const currentLinks = JSON.parse(rawCurrentLinks)
+                if (currentLinks.ID===ID) {
+                    localStorage.setItem("currentPlanLinks",'')
+                }
+        }
+        const rawCurrentNotes = localStorage.getItem("currentPlanNotes")
+        if (rawCurrentNotes) {
+            const currentNotes = JSON.parse(rawCurrentNotes)
+            if (currentNotes.ID===ID) {
+                localStorage.setItem('currentPlanNotes','')
+            }
+        }
+
+
+
+        localStorage.setItem("plansLinks",JSON.stringify(plansLinks))
+        localStorage.setItem("plansNotes",JSON.stringify(plansNotes))
         localStorage.setItem("currentUserData",JSON.stringify(CurrentUserData))
         localStorage.setItem("usersData",JSON.stringify(usersData))     
 
@@ -108,6 +151,50 @@ class  plansBriefManagement {
     setCurrentPlan(ID) {
         const currentPlan = plans.filter(plan=>plan.ID===ID)
         localStorage.setItem("currentPlan",JSON.stringify(currentPlan[0]))
+        const setPlanNotes = new planNotesManagement()
+        setPlanNotes.setCurrentPlanNotes(ID)
     }
+    saveCurrentPlan(plan) {
+        localStorage.setItem('currentPlan',JSON.stringify(plan))
+        const rawPlans = localStorage.getItem('plans')
+        const plans = JSON.parse(rawPlans)
+        plans.forEach(pPlan=>{
+            if (pPlan.ID===plan.ID) {
+                Object.assign(pPlan,plan)
+            }
+        })
+        localStorage.setItem('plans',JSON.stringify(plans))
+        updatePlan()
+    }
+}
+function updatePlan() {
+    const date = new Date()
+    const day = String(date.getDate())
+    const month = String(date.getMonth() + 1)
+    const year = String(date.getFullYear())
+    const updatedDate = `${day}/${month}/${year}`
+    const rawCurrentPlan=localStorage.getItem('currentPlan')
+    if (rawCurrentPlan) {
+        const currentPlan = JSON.parse(rawCurrentPlan)
+        currentPlan.Updated = updatedDate
+        localStorage.setItem("currentPlan",JSON.stringify(currentPlan))
+        const rawPlans = localStorage.getItem("plans")
+        const plans= JSON.parse(rawPlans)
+        plans.forEach(plan=>{
+            if (plan.ID===currentPlan.ID) {
+                Object.assign(plan,currentPlan)
+            }
+        })
+        const rawCurrentPlans = localStorage.getItem("currentUserPlans")
+        const currentPlans = JSON.parse(rawCurrentPlans)
+        currentPlans.forEach(plan=>{
+            if (plan.ID===currentPlan.ID) {
+                Object.assign(plan,currentPlan)
+            }
+        })
+        localStorage.setItem("plans",JSON.stringify(plans))
+        localStorage.setItem("currentUserPlans",JSON.stringify(currentPlans))
+    }
+
 }
 export default plansBriefManagement;
