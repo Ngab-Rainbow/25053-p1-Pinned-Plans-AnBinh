@@ -113,7 +113,7 @@ function menuTools() {
 
     if ((/android|iphone|ipad|ipod/i.test(navigator.userAgent.toLocaleLowerCase())) || (navigator.maxTouchPoints > 0)) {
         getAllPlans.forEach(planContainer => {
-        planContainer.addEventListener("click", mouse => {
+        planContainer.onclick= mouse => {
             const openMenu = setTimeout(() => {
                 planID = planContainer.dataset.planID
                 menu.classList.add("activated")
@@ -128,7 +128,7 @@ function menuTools() {
                 menu.style.left = `${mouse.clientX}px`
                 menu.style.top = `${mouse.clientY}px`
             }, 50)
-        })
+        }
     })
     } else {
         getAllPlans.forEach(planContainer => {
@@ -158,7 +158,7 @@ function menuTools() {
             }
         })
     }
-    document.querySelector(".view-plan").addEventListener("click", () => {
+    document.querySelector(".view-plan").onclick = () => {
         info.classList.add("view-activated")
         document.querySelector(".info").style.display = 'block'
         document.querySelector(".edit").style.display = 'none'
@@ -182,8 +182,8 @@ function menuTools() {
                 break;
             }
         }
-    })
-    document.querySelector(".edit-plan").addEventListener("click", () => {
+    }
+    document.querySelector(".edit-plan").onclick= () => {
         info.classList.add("view-activated")
         document.querySelector(".info").style.display = 'none'
         document.querySelector(".edit").style.display = 'block'
@@ -200,8 +200,7 @@ function menuTools() {
                 return
             }
         })
-        document.querySelector(".confirm").addEventListener("click", () => {
-            console.log("ok")
+        document.querySelector(".confirm").onclick= () => {
             const notificationCount = document.querySelector(".error")
             if (notificationCount) {
                 notificationCount.remove()
@@ -239,8 +238,8 @@ function menuTools() {
             adjustInfo.adjustPlanInfo(planID, inputName.value, inputDesc.value, updatedDate)
             info.classList.remove("view-activated")
             window.location.href = "../plans-management/plans-management.html"
-        })
-        document.querySelector(".reset").addEventListener("click", () => {
+        }
+        document.querySelector(".reset").onclick= () => {
             plans.forEach(plan => {
                 if (plan.ID === planID) {
                     inputName.value = plan.planName
@@ -249,10 +248,10 @@ function menuTools() {
                 }
             })
 
-        })
+        }
 
-    })
-    document.querySelector(".delete-plan").addEventListener("click", () => {
+    }
+    document.querySelector(".delete-plan").onclick= () => {
         info.classList.add("view-activated")
         document.querySelector(".info").style.display = 'none'
         document.querySelector(".edit").style.display = 'none'
@@ -264,25 +263,25 @@ function menuTools() {
                 document.querySelector(".plan-Name").textContent = `->Plan's name: ${plan.planName}`
             }
         })
-        document.querySelector(".no").addEventListener("click", () => {
+        document.querySelector(".no").onclick= () => {
             info.classList.remove("view-activated")
-        })
-        document.querySelector(".yes").addEventListener("click", () => {
+        }
+        document.querySelector(".yes").onclick= () => {
             const deletePlan = new plansBriefManagement()
             deletePlan.removePlan(planID)
             info.classList.remove("view-activated")
             window.location.href = "../plans-management/plans-management.html"
-        })
-    })
-    document.querySelector(".open-plan").addEventListener("click", () => {
+        }
+    }
+    document.querySelector(".open-plan").onclick= () => {
         const setCurrentPlan = new plansBriefManagement()
         setCurrentPlan.setCurrentPlan(planID)
         window.location.href = "../function-page/function-page.html"
-    })
-    window.addEventListener("click", () => {
+    }
+    window.onclick= () => {
         menu.classList.remove("activated")
-    })
-    document.querySelector(".close").addEventListener("click", () => {
+    }
+    document.querySelector(".close").onclick= () => {
         info.classList.remove("view-activated")
-    })
+    }
 }

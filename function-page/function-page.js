@@ -155,6 +155,7 @@ const displayNotes = () => {
         if (note.status != "none") {
             const status = note.status
             const statusSign = document.createElement('div')
+
             statusSign.style.width = `fit-content`
             statusSign.style.height = `fit-content`
             switch (status) {
@@ -162,7 +163,7 @@ const displayNotes = () => {
                     statusSign.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fa0606"><path d="M324-111.5Q251-143 197-197t-85.5-127Q80-397 80-480q0-114 59.5-210.5T301-838q1 19 4 38.5t10 45.5q-72 44-113.5 116.5T160-480q0 134 93 227t227 93q134 0 227-93t93-227q0-85-41.5-158T644-755q7-26 10-45.5t5-37.5q102 51 161.5 147T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80q-83 0-156-31.5ZM310-310q-70-70-70-170 0-58 25.5-109t72.5-85q5 15 11 34.5t16 48.5q-22 23-33.5 51T320-480q0 66 47 113t113 47q66 0 113-47t47-113q0-32-11.5-60T595-591q8-24 14.5-44.5T621-674q47 34 73 85t26 109q0 100-70 170t-170 70q-100 0-170-70Zm130-310q-37-112-48.5-157.5T380-860q0-42 29-71t71-29q42 0 71 29t29 71q0 37-11.5 82.5T520-620h-80Zm-16.5 196.5Q400-447 400-480t23.5-56.5Q447-560 480-560t56.5 23.5Q560-513 560-480t-23.5 56.5Q513-400 480-400t-56.5-23.5Z"/></svg>`
                     break;
                 case "Doing":
-                    statusSign.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fa0606"><path d="M324-111.5Q251-143 197-197t-85.5-127Q80-397 80-480q0-114 59.5-210.5T301-838q1 19 4 38.5t10 45.5q-72 44-113.5 116.5T160-480q0 134 93 227t227 93q134 0 227-93t93-227q0-85-41.5-158T644-755q7-26 10-45.5t5-37.5q102 51 161.5 147T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80q-83 0-156-31.5ZM310-310q-70-70-70-170 0-58 25.5-109t72.5-85q5 15 11 34.5t16 48.5q-22 23-33.5 51T320-480q0 66 47 113t113 47q66 0 113-47t47-113q0-32-11.5-60T595-591q8-24 14.5-44.5T621-674q47 34 73 85t26 109q0 100-70 170t-170 70q-100 0-170-70Zm130-310q-37-112-48.5-157.5T380-860q0-42 29-71t71-29q42 0 71 29t29 71q0 37-11.5 82.5T520-620h-80Zm-16.5 196.5Q400-447 400-480t23.5-56.5Q447-560 480-560t56.5 23.5Q560-513 560-480t-23.5 56.5Q513-400 480-400t-56.5-23.5Z"/></svg>`
+                    statusSign.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#b4b100"><path d="M322.5-437.5Q340-455 340-480t-17.5-42.5Q305-540 280-540t-42.5 17.5Q220-505 220-480t17.5 42.5Q255-420 280-420t42.5-17.5Zm200 0Q540-455 540-480t-17.5-42.5Q505-540 480-540t-42.5 17.5Q420-505 420-480t17.5 42.5Q455-420 480-420t42.5-17.5Zm200 0Q740-455 740-480t-17.5-42.5Q705-540 680-540t-42.5 17.5Q620-505 620-480t17.5 42.5Q655-420 680-420t42.5-17.5ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>`
                     break;
                 case "Finish":
                     statusSign.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#0d9201"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q65 0 123 19t107 53l-58 59q-38-24-81-37.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160q133 0 226.5-93.5T800-480q0-18-2-36t-6-35l65-65q11 32 17 66t6 70q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-56-216L254-466l56-56 114 114 400-401 56 56-456 457Z"/></svg>`
@@ -989,27 +990,38 @@ function contextMenuNote() {
                 const choices = statusMenu.querySelectorAll('p')
                 choices.forEach(statusChoice => {
                     statusChoice.onclick = () => {
+                        const renmantStatusSign = note.querySelector('.status-sign')
+                        if (renmantStatusSign) {renmantStatusSign.remove()}
+                        const statusSign = document.createElement('div')
+                        statusSign.style.width = `fit-content`
+                        statusSign.style.height = `fit-content`
                         let choice = statusChoice.textContent
                         const updateStatus = new planNotesManagement()
                         if (choice === `Need to do`) {
                             selectedNote.status = 'needToDo'
                             saveNotes()
                             updateStatus.updateNote3(nID, selectedNote.status)
-                            displayNotes()
+                            statusSign.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fa0606"><path d="M324-111.5Q251-143 197-197t-85.5-127Q80-397 80-480q0-114 59.5-210.5T301-838q1 19 4 38.5t10 45.5q-72 44-113.5 116.5T160-480q0 134 93 227t227 93q134 0 227-93t93-227q0-85-41.5-158T644-755q7-26 10-45.5t5-37.5q102 51 161.5 147T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80q-83 0-156-31.5ZM310-310q-70-70-70-170 0-58 25.5-109t72.5-85q5 15 11 34.5t16 48.5q-22 23-33.5 51T320-480q0 66 47 113t113 47q66 0 113-47t47-113q0-32-11.5-60T595-591q8-24 14.5-44.5T621-674q47 34 73 85t26 109q0 100-70 170t-170 70q-100 0-170-70Zm130-310q-37-112-48.5-157.5T380-860q0-42 29-71t71-29q42 0 71 29t29 71q0 37-11.5 82.5T520-620h-80Zm-16.5 196.5Q400-447 400-480t23.5-56.5Q447-560 480-560t56.5 23.5Q560-513 560-480t-23.5 56.5Q513-400 480-400t-56.5-23.5Z"/></svg>`
+                            statusSign.classList.add("status-sign")
+                            note.appendChild(statusSign)
                             return
                         }
                         if (choice === `Doing`) {
                             selectedNote.status = 'Doing'
                             saveNotes()
                             updateStatus.updateNote3(nID, selectedNote.status)
-                            displayNotes()
+                            statusSign.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#b4b100"><path d="M322.5-437.5Q340-455 340-480t-17.5-42.5Q305-540 280-540t-42.5 17.5Q220-505 220-480t17.5 42.5Q255-420 280-420t42.5-17.5Zm200 0Q540-455 540-480t-17.5-42.5Q505-540 480-540t-42.5 17.5Q420-505 420-480t17.5 42.5Q455-420 480-420t42.5-17.5Zm200 0Q740-455 740-480t-17.5-42.5Q705-540 680-540t-42.5 17.5Q620-505 620-480t17.5 42.5Q655-420 680-420t42.5-17.5ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>`
+                            statusSign.classList.add("status-sign")
+                            note.appendChild(statusSign)
                             return
                         }
                         if (choice === `Finish`) {
                             selectedNote.status = 'Finish'
                             saveNotes()
                             updateStatus.updateNote3(nID, selectedNote.status)
-                            displayNotes()
+                            statusSign.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#0d9201"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q65 0 123 19t107 53l-58 59q-38-24-81-37.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160q133 0 226.5-93.5T800-480q0-18-2-36t-6-35l65-65q11 32 17 66t6 70q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-56-216L254-466l56-56 114 114 400-401 56 56-456 457Z"/></svg>`
+                            statusSign.classList.add("status-sign")
+                            note.appendChild(statusSign)
                             return
                         }
 
@@ -1063,7 +1075,7 @@ function contextMenuNote() {
 
 function moveNote2(note) {
     const board = document.querySelector(".board")
-    note.onmousedown = getCurrentPosition
+    note.onpointerdown = getCurrentPosition
     let x, y
     function getCurrentPosition(mouse) {
         let nID = note.dataset.id
@@ -1073,8 +1085,8 @@ function moveNote2(note) {
         if (selectedNote.pin.existence != "yes") {
             x = mouse.clientX
             y = mouse.clientY
-            document.onmouseup = stopMoving
-            document.onmousemove = movingNote
+            document.onpointerup = stopMoving
+            document.onpointermove = movingNote
         }
     }
     function movingNote(mouse) {
@@ -1104,8 +1116,8 @@ function moveNote2(note) {
     }
     function stopMoving() {
         modifiedNotes.add(note.dataset.id);
-        document.onmouseup = null
-        document.onmousemove = null
+        document.onpointerup = null
+        document.onpointermove= null
         scaleNote(note)
     }
 }
@@ -1114,14 +1126,14 @@ function scaleNote(note) {
     const scaleIcon = note.querySelector('.resize-area')
     let x
     if (scaleIcon) {
-        scaleIcon.onmousedown = getCurrentX
+        scaleIcon.onpointerdown = getCurrentX
     }
     function getCurrentX(mouse) {
         mouse.preventDefault()
-        note.onmousedown = null
+        note.onpointerdown = null
         x = mouse.clientX
-        document.onmouseup = finishResizing
-        document.onmousemove = resizing
+        document.onpointerup = finishResizing
+        document.onpointermove = resizing
     }
     function resizing(mouse) {
         let dX = (mouse.clientX - x) / 16
@@ -1139,8 +1151,8 @@ function scaleNote(note) {
     }
     function finishResizing() {
         modifiedNotes.add(note.dataset.id);
-        document.onmouseup = null;
-        document.onmousemove = null;
+        document.onpointerup = null;
+        document.onpointermove = null;
         moveNote2(note)
     }
 }
@@ -1151,14 +1163,14 @@ function resizeAllBtn(note) {
     const contentSize = note.querySelector('.noteContent')
     let x
     if (resizeIcon) {
-        resizeIcon.onmousedown = getCurrentX
+        resizeIcon.onpointerdown = getCurrentX
     }
     function getCurrentX(mouse) {
         mouse.preventDefault()
-        note.onmousedown = null
+        note.onpointerdown = null
         x = mouse.clientX
-        document.onmouseup = finishResizing
-        document.onmousemove = resizing
+        document.onpointerup = finishResizing
+        document.onpointermove = resizing
     }
     function resizing(mouse) {
         let dX = (mouse.clientX - x) / 16
@@ -1199,8 +1211,8 @@ function resizeAllBtn(note) {
     }
     function finishResizing() {
         modifiedNotes.add(note.dataset.id);
-        document.onmouseup = null;
-        document.onmousemove = null;
+        document.onpointerup = null;
+        document.onpointermove = null;
         moveNote2(note)
     }
 }
@@ -1254,4 +1266,13 @@ function lineFunction() {
             }
         })
     }
+}
+document.querySelector('.instruction').onclick=()=>{
+        document.querySelector('.instruction-board').style.top=`50%`
+    setTimeout(()=>{
+        window.onclick = () =>{
+            document.querySelector('.instruction-board').style.top=`-50%`
+            window.onclick=null
+        }
+    },2)   
 }
