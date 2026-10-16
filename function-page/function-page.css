@@ -1903,7 +1903,7 @@ nav {
 }
 .board-area .board {
     flex: 0 0 auto !important;
-    width: auto;
+    width: 50rem;
     max-width: none !important;
     min-width: 0 !important;
     max-height: none !important;
