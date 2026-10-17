@@ -2,21 +2,7 @@ import basicAccountManagement from "../JS/accounts-management.js"
 import dataUsersManagement from "../JS/users-data-management.js"
 import verify from "../JS/verify-account.js"
 verify.verifyGuest()
-const settingsContainer = document.querySelector(".settings-container")
-const interactionBox = document.querySelector(".interaction-close")
-document.querySelector(".close-settings").addEventListener("click", () => {
-    settingsContainer.style.top = "-100%"
-    interactionBox.style.top = "-100%"
-})
-document.querySelector(".settings-btn").addEventListener("click", () => {
-    settingsContainer.style.top = "25vh"
-    interactionBox.style.top = "0"
-})
 
-interactionBox.addEventListener("click", () => {
-    settingsContainer.style.top = "-100%"
-    interactionBox.style.top = "-100%"
-})
 const fullname = document.querySelector(".input-name")
 const email = document.querySelector(".input-email")
 const password = document.querySelector(".input-password")

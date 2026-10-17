@@ -281,6 +281,9 @@ function menuTools() {
     window.onclick= () => {
         menu.classList.remove("activated")
     }
+    window.onblur = () => {
+        menu.classList.remove("activated")
+    }
     document.querySelector(".close").onclick= () => {
         info.classList.remove("view-activated")
     }

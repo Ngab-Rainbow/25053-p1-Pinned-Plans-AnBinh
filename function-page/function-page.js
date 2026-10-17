@@ -1062,6 +1062,7 @@ function contextMenuNote() {
         scaleNote(note)
         resizeAllBtn(note)
         window.onclick = closeMenu
+        window.onblur = closeMenu
     })
     function closeMenu() {
         const menu = document.querySelector('.adjust-menu')
