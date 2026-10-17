@@ -1,7 +1,11 @@
 const testData = localStorage.getItem("accounts")
+const testData2 = localStorage.getItem("usersData")
+const testData3 = localStorage.getItem("plans")
+const testData4 = localStorage.getItem("plansNotes")
+const testData5 = localStorage.getItem("plansLinks")
 import data from "../JS/mock-data.js";
 
-if (!testData) {
+if (!testData||!testData2||!testData3||!testData4||!testData5) {
     localStorage.setItem("accounts", JSON.stringify(data.accounts))
     localStorage.setItem("usersData", JSON.stringify(data.usersData))
     localStorage.setItem("plans", JSON.stringify(data.plans))
@@ -13,7 +17,4 @@ if (!testData) {
     localStorage.setItem("currentPlan","")
     localStorage.setItem("currentPlanNotes","")
     localStorage.setItem("currentPlanLinks",'')
-window.location.href = "../main-page/main-page.html"
-} else {
-    window.location.href = "../main-page/main-page.html"
 }
