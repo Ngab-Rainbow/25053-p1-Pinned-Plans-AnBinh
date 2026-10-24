@@ -1,597 +1,177 @@
+
 const accounts = [
-    {name:"NguyenAnBinh",email:"wukong.dargon@gmail.com",password:"0708115625"},
-    {name:"Nguyen Van A", email:"abc@gmail.com",password:"01234567890"},
-    {name:"Co   be bandiem",email:"cbb@alo.com",password:"09012202600"},
-    {name:"  Ke manhnhat The Goi",email:"eld@yahoo.gmai",password:"07055500120"}
-]
-const usersData =[
-    {email:"wukong.dargon@gmail.com",nationality:"Vietnamese",age:17,gender:"Male",total:0,avatar:"https://placehold.net/avatar-5.png"},
-    {email:"abc@gmail.com",nationality:"Vietnamese",age:31,gender:"Male",total:0,avatar:"https://placehold.net/avatar-2.svg"},
-    {email:"cbb@alo.com",nationality:"French",age:13,gender:"Female",total:0,avatar:"https://placehold.net/avatar-3.png"},
-    {email:"eld@yahoo.gmai",nationality:"Mars",age:100,gender:"Secret",total:0,avatar:"https://placehold.net/avatar-4.png"},
-]
+  { name: "Mira Chen", email: "mira.chen@example.com", password: "Mira2026!Demo" },
+  { name: "Leo Martin", email: "leo.martin@example.com", password: "Leo2026!Demo" },
+  { name: "Sara Patel", email: "sara.patel@example.com", password: "Sara2026!Demo" },
+  { name: "Noah Kim", email: "noah.kim@example.com", password: "Noah2026!Demo" },
+];
+
+const usersData = [
+  { email: "mira.chen@example.com", nationality: "Singaporean", age: 26, gender: "Female", total: 2, avatar: "https://api.dicebear.com/9.x/initials/svg?seed=Mira%20Chen" },
+  { email: "leo.martin@example.com", nationality: "Canadian", age: 30, gender: "Male", total: 1, avatar: "https://api.dicebear.com/9.x/initials/svg?seed=Leo%20Martin" },
+  { email: "sara.patel@example.com", nationality: "Indian", age: 24, gender: "Female", total: 4, avatar: "https://api.dicebear.com/9.x/initials/svg?seed=Sara%20Patel" },
+  { email: "noah.kim@example.com", nationality: "South Korean", age: 29, gender: "Male", total: 3, avatar: "https://api.dicebear.com/9.x/initials/svg?seed=Noah%20Kim" },
+];
 
 const plans = [
-{ID: "wukong.dargon@gmail.com1", planName:"First plan", description: "Test plan 1", Date: "14/03/2026", background:"#FAEBD7", borderColor:"rgb(214, 126, 74)", ratio: "4/3", Updated:"24/05/2026"}, 
-{ID: "wukong.dargon@gmail.com2", planName:"Second plan", description: "Test plan 2", Date: "27/07/2026", background:"#7FFFD4", borderColor:"#3A8D7C", ratio: "1/1", Updated:"18/09/2026"}, 
-{ID: "abc@gmail.com1", planName:"I", description: "Oh yessss", Date: "05/01/2026", background:"#000000", borderColor:"rgb(119, 87, 214)", ratio: "3/4", Updated:"22/02/2026"}, 
-{ID: "cbb@alo.com1", planName:"This is my plan", description: "Oh noooo", Date: "19/05/2026", background:"rgb(255, 214, 165)", borderColor:"#E28A5B", ratio: "3/2", Updated:"03/08/2026"}, 
-{ID: "cbb@alo.com2", planName:"So this is it", description: "Hello anh em", Date: "02/09/2026", background:"#CDEBFF", borderColor:"rgb(71, 143, 190)", ratio: "4/3", Updated:"28/09/2026"}, 
-{ID: "cbb@alo.com3", planName:"Finance", description: "Goodby everyone", Date: "23/11/2025", background:"rgb(221, 255, 200)", borderColor:"#6BA84A", ratio: "2/3", Updated:"17/04/2026"}, 
-{ID: "cbb@alo.com4", planName:"Travel", description: "This is the last one", Date: "08/08/2026", background:"#FFE0F0", borderColor:"rgb(205, 92, 140)", ratio: "1/1", Updated:"14/09/2026"}, 
-{ID: "eld@yahoo.gmai1", planName:"Business", description: "Yohohoho this is the bullestin plan!", Date: "31/12/2025", background:"rgb(255, 239, 168)", borderColor:"#D4A72C", ratio: "3/4", Updated:"11/03/2026"}, 
-{ID: "eld@yahoo.gmai2", planName:"Project", description: "I don't think this will work", Date: "11/04/2026", background:"#D9D2FF", borderColor:"rgb(106, 90, 205)", ratio: "3/2", Updated:"30/06/2026"}, 
-{ID: "eld@yahoo.gmai3", planName:"Investment", description: "Maybe it will work", Date: "16/06/2026", background:"rgb(198, 245, 230)", borderColor:"#3D9B7E", ratio: "4/3", Updated:"07/09/2026"}
-]
+  { ID: "mira.chen@example.com1", planName: "Campus Robotics Challenge", description: "Design and test a small autonomous robot for a student challenge.", Date: "08/01/2026", background: "#F1F7FF", borderColor: "#3873A8", ratio: "4/3", Updated: "19/10/2026" },
+  { ID: "mira.chen@example.com2", planName: "Language Learning Roadmap", description: "Build a realistic routine for learning conversational Spanish.", Date: "22/02/2026", background: "#FFF6EC", borderColor: "#DB8954", ratio: "1/1", Updated: "12/10/2026" },
+  { ID: "leo.martin@example.com1", planName: "Home Recording Studio", description: "Create a compact recording space with clear vocal sound.", Date: "14/03/2026", background: "#F6F2FF", borderColor: "#7656B4", ratio: "3/4", Updated: "18/10/2026" },
+  { ID: "sara.patel@example.com1", planName: "Balcony Herb Garden", description: "Grow useful herbs in a small, sunny outdoor space.", Date: "03/04/2026", background: "#F1FAE9", borderColor: "#66A347", ratio: "3/2", Updated: "22/10/2026" },
+  { ID: "sara.patel@example.com2", planName: "Habit Tracker App", description: "Develop a lightweight mobile habit-tracking prototype.", Date: "27/04/2026", background: "#EAF5FF", borderColor: "#397DAA", ratio: "4/3", Updated: "17/10/2026" },
+  { ID: "sara.patel@example.com3", planName: "Weekend Hiking Plan", description: "Organize a safe and enjoyable two-day hiking trip.", Date: "11/06/2026", background: "#FFF5E8", borderColor: "#BB7842", ratio: "2/3", Updated: "20/10/2026" },
+  { ID: "sara.patel@example.com4", planName: "Community Art Workshop", description: "Host a beginner-friendly neighborhood drawing session.", Date: "05/07/2026", background: "#FFF0F6", borderColor: "#C76792", ratio: "1/1", Updated: "21/10/2026" },
+  { ID: "noah.kim@example.com1", planName: "Reading Challenge 2026", description: "Track books and reflections throughout the year.", Date: "09/01/2026", background: "#F5F4ED", borderColor: "#8A815D", ratio: "3/4", Updated: "15/10/2026" },
+  { ID: "noah.kim@example.com2", planName: "Photography Portfolio", description: "Curate a polished online portfolio of recent photographs.", Date: "16/03/2026", background: "#EDF7F7", borderColor: "#458B87", ratio: "3/2", Updated: "23/10/2026" },
+  { ID: "noah.kim@example.com3", planName: "Café Pop-up Concept", description: "Plan a small weekend coffee-and-pastry pop-up.", Date: "01/08/2026", background: "#FFF2DD", borderColor: "#BA7D38", ratio: "4/3", Updated: "24/10/2026" },
+];
+
+const makeNote = (noteID, x, y, background, color, title, content, width, height, pinned) => ({
+  noteID, x, y, background, color,
+  text: [{ title, size: "0.64rem" }, { content, size: "0.38rem" }],
+  width, height, status: "none",
+  pin: { existence: pinned ? "yes" : "", color: pinned ? "#C77D26" : "" }
+});
 
 const plansNotes = [
-    {
-        ID: "wukong.dargon@gmail.com1",
-        notes: [
-            {
-                noteID: "0", x: "50.3016", y: "9.3312",
-                background: "#FCE0E7", color: "#682B43",
-                text: [
-                    {title: "Set a deadline", size: "0.6206896551724138rem"},
-                    {content: "Choose a realistic due date, then leave time for a final review.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "12rem", status: "none",
-                pin: {existence: "yes", color: "#D99125"}
-            },
-            {
-                noteID: "1", x: "51.7259", y: "40.8976",
-                background: "#E9DEF7", color: "#563371",
-                text: [
-                    {title: "Review the first draft", size: "0.6206896551724138rem"},
-                    {content: "Check the wording, fix mistakes, and note what needs improvement.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "8rem", status: "none",
-                pin: {existence: "yes", color: "#D99125"}
-            },
-            {
-                noteID: "2", x: "10.7721", y: "41.3886",
-                background: "#E8F2C6", color: "#41551D",
-                text: [
-                    {title: "Write down initial ideas", size: "0.6206896551724138rem"},
-                    {content: "Collect possible features and questions before choosing an approach.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "12rem", status: "none",
-                pin: {existence: "yes", color: "#D99125"}
-            },
-            {
-                noteID: "3", x: "27.2296", y: "69.3299",
-                background: "#FCE0E7", color: "#682B43",
-                text: [
-                    {title: "Break work into smaller tasks", size: "0.6206896551724138rem"},
-                    {content: "Divide the project into manageable steps and prioritize the essentials.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "8rem", status: "none",
-                pin: {existence: "", color: ""}
-            }
-        ]
-    },
-    {
-        ID: "wukong.dargon@gmail.com2",
-        notes: [
-            {
-                noteID: "0", x: "10.9063", y: "12.2592",
-                background: "#E5E9FF", color: "#2D376A",
-                text: [
-                    {title: "Prepare the final version", size: "0.6206896551724138rem"},
-                    {content: "Clean up the remaining details and confirm everything is ready.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "8rem", status: "none",
-                pin: {existence: "", color: ""}
-            },
-            {
-                noteID: "1", x: "58.2862", y: "70.4748",
-                background: "#D9F4EA", color: "#164B3C",
-                text: [
-                    {title: "Collect feedback", size: "0.6206896551724138rem"},
-                    {content: "Ask a few people to test the work and share their suggestions.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "10rem", status: "none",
-                pin: {existence: "", color: ""}
-            },
-            {
-                noteID: "2", x: "27.6549", y: "71.2963",
-                background: "#FCE0E7", color: "#682B43",
-                text: [
-                    {title: "Build a simple prototype", size: "0.6206896551724138rem"},
-                    {content: "Start with the core flow. Add extra features after testing it.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "8rem", status: "none",
-                pin: {existence: "yes", color: "#D99125"}
-            },
-            {
-                noteID: "3", x: "51.0912", y: "8.6237",
-                background: "#FFF0B3", color: "#44320C",
-                text: [
-                    {title: "Confirm the project scope", size: "0.6206896551724138rem"},
-                    {content: "Write down what is included and what can be postponed.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "10rem", status: "none",
-                pin: {existence: "", color: ""}
-            },
-            {
-                noteID: "4", x: "10.1899", y: "41.3157",
-                background: "#E9DEF7", color: "#563371",
-                text: [
-                    {title: "Test the important features", size: "0.6206896551724138rem"},
-                    {content: "Try normal usage, empty inputs, and unexpected actions.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "11rem", status: "none",
-                pin: {existence: "yes", color: "#D99125"}
-            }
-        ]
-    },
-    {
-        ID: "abc@gmail.com1",
-        notes: [
-            {
-                noteID: "0", x: "6.6477", y: "11.1724",
-                background: "#E8F2C6", color: "#41551D",
-                text: [
-                    {title: "Take a short break", size: "0.6206896551724138rem"},
-                    {content: "Step away for a moment, then return with a fresh perspective.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "9rem", status: "none",
-                pin: {existence: "yes", color: "#D99125"}
-            },
-            {
-                noteID: "1", x: "61.5137", y: "68.3931",
-                background: "#FCE0E7", color: "#682B43",
-                text: [
-                    {title: "Remember today's priorities", size: "0.6206896551724138rem"},
-                    {content: "Focus on the most important task before handling small requests.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "8rem", status: "none",
-                pin: {existence: "", color: ""}
-            },
-            {
-                noteID: "2", x: "54.1315", y: "42.3914",
-                background: "#D9F4EA", color: "#164B3C",
-                text: [
-                    {title: "Organize the workspace", size: "0.6206896551724138rem"},
-                    {content: "Keep frequently used resources easy to find and remove clutter.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "9rem", status: "none",
-                pin: {existence: "yes", color: "#D99125"}
-            }
-        ]
-    },
-    {
-        ID: "cbb@alo.com1",
-        notes: [
-            {
-                noteID: "0", x: "26.4223", y: "68.8655",
-                background: "#FFF0B3", color: "#44320C",
-                text: [
-                    {title: "Make a quick checklist", size: "0.6206896551724138rem"},
-                    {content: "List today's tasks and mark each one when it is finished.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "12rem", status: "none",
-                pin: {existence: "yes", color: "#D99125"}
-            },
-            {
-                noteID: "1", x: "52.5654", y: "10.8609",
-                background: "#E8F2C6", color: "#41551D",
-                text: [
-                    {title: "Start with the hardest task", size: "0.6206896551724138rem"},
-                    {content: "Work on the most demanding part while your energy is high.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "11rem", status: "none",
-                pin: {existence: "", color: ""}
-            },
-            {
-                noteID: "2", x: "58.6625", y: "70.3296",
-                background: "#E9DEF7", color: "#563371",
-                text: [
-                    {title: "Share progress with the team", size: "0.6206896551724138rem"},
-                    {content: "Summarize completed work, current blockers, and next actions.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "10rem", status: "none",
-                pin: {existence: "yes", color: "#D99125"}
-            },
-            {
-                noteID: "3", x: "8.9623", y: "9.3768",
-                background: "#E9DEF7", color: "#563371",
-                text: [
-                    {title: "Record useful ideas", size: "0.6206896551724138rem"},
-                    {content: "Save interesting suggestions so they are not forgotten.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "12rem", status: "none",
-                pin: {existence: "", color: ""}
-            },
-            {
-                noteID: "4", x: "9.6006", y: "38.9706",
-                background: "#D9F4EA", color: "#164B3C",
-                text: [
-                    {title: "Check the results", size: "0.6206896551724138rem"},
-                    {content: "Compare the finished work with the original requirements.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "11rem", status: "none",
-                pin: {existence: "", color: ""}
-            }
-        ]
-    },
-    {
-        ID: "cbb@alo.com2",
-        notes: [
-            {
-                noteID: "0", x: "50.6749", y: "42.3957",
-                background: "#E9DEF7", color: "#563371",
-                text: [
-                    {title: "Test on different screens", size: "0.6206896551724138rem"},
-                    {content: "Check narrow phone widths, tablets, and desktop layouts.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "9rem", status: "none",
-                pin: {existence: "yes", color: "#D99125"}
-            },
-            {
-                noteID: "1", x: "8.3389", y: "39.2918",
-                background: "#E5E9FF", color: "#2D376A",
-                text: [
-                    {title: "Polish the details", size: "0.6206896551724138rem"},
-                    {content: "Improve spacing, typography, transitions, and error messages.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "10rem", status: "none",
-                pin: {existence: "yes", color: "#D99125"}
-            },
-            {
-                noteID: "2", x: "25.4219", y: "68.2053",
-                background: "#D9F4EA", color: "#164B3C",
-                text: [
-                    {title: "Choose the color palette", size: "0.6206896551724138rem"},
-                    {content: "Keep the background, borders, and text visually consistent.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "8rem", status: "none",
-                pin: {existence: "", color: ""}
-            },
-            {
-                noteID: "3", x: "48.6030", y: "9.2995",
-                background: "#E5E9FF", color: "#2D376A",
-                text: [
-                    {title: "Publish the update", size: "0.6206896551724138rem"},
-                    {content: "Make a backup, check the final build, and publish the changes.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "11rem", status: "none",
-                pin: {existence: "", color: ""}
-            }
-        ]
-    },
-    {
-        ID: "cbb@alo.com3",
-        notes: [
-            {
-                noteID: "0", x: "54.0568", y: "42.3988",
-                background: "#FCE0E7", color: "#682B43",
-                text: [
-                    {title: "Check recurring expenses", size: "0.6206896551724138rem"},
-                    {content: "Review subscriptions, bills, and other repeating costs.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "9rem", status: "none",
-                pin: {existence: "yes", color: "#D99125"}
-            },
-            {
-                noteID: "1", x: "10.4080", y: "11.3656",
-                background: "#FFF0B3", color: "#44320C",
-                text: [
-                    {title: "Prepare a summary", size: "0.6206896551724138rem"},
-                    {content: "Record income, expenses, and the balance for this month.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "8rem", status: "none",
-                pin: {existence: "", color: ""}
-            },
-            {
-                noteID: "2", x: "8.7330", y: "40.7401",
-                background: "#E8F2C6", color: "#41551D",
-                text: [
-                    {title: "Update the budget", size: "0.6206896551724138rem"},
-                    {content: "Adjust the spending limits based on current priorities.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "8rem", status: "none",
-                pin: {existence: "yes", color: "#D99125"}
-            },
-            {
-                noteID: "3", x: "24.4326", y: "68.1452",
-                background: "#FFE5D1", color: "#713916",
-                text: [
-                    {title: "Compare planned and actual costs", size: "0.6206896551724138rem"},
-                    {content: "Identify differences between the budget and real spending.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "11rem", status: "none",
-                pin: {existence: "", color: ""}
-            },
-            {
-                noteID: "4", x: "49.8241", y: "8.7969",
-                background: "#D9F4EA", color: "#164B3C",
-                text: [
-                    {title: "Set aside savings", size: "0.6206896551724138rem"},
-                    {content: "Decide on a savings goal and a contribution schedule.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "11rem", status: "none",
-                pin: {existence: "", color: ""}
-            }
-        ]
-    },
-    {
-        ID: "cbb@alo.com4",
-        notes: [
-            {
-                noteID: "0", x: "10.2654", y: "37.8007",
-                background: "#E9DEF7", color: "#563371",
-                text: [
-                    {title: "Prepare a packing list", size: "0.6206896551724138rem"},
-                    {content: "Remember documents, clothes, chargers, and essentials.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "11rem", status: "none",
-                pin: {existence: "", color: ""}
-            },
-            {
-                noteID: "1", x: "8.5835", y: "12.3523",
-                background: "#E9DEF7", color: "#563371",
-                text: [
-                    {title: "List places to visit", size: "0.6206896551724138rem"},
-                    {content: "Group attractions by area to avoid unnecessary travel.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "9rem", status: "none",
-                pin: {existence: "", color: ""}
-            },
-            {
-                noteID: "2", x: "26.0353", y: "68.5335",
-                background: "#FFF0B3", color: "#44320C",
-                text: [
-                    {title: "Choose a destination", size: "0.6206896551724138rem"},
-                    {content: "Compare the weather, travel costs, and available activities.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "12rem", status: "none",
-                pin: {existence: "", color: ""}
-            },
-            {
-                noteID: "3", x: "59.0653", y: "67.9063",
-                background: "#FCE0E7", color: "#682B43",
-                text: [
-                    {title: "Research local transportation", size: "0.6206896551724138rem"},
-                    {content: "Check airport connections and options for getting around.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "9rem", status: "none",
-                pin: {existence: "yes", color: "#D99125"}
-            }
-        ]
-    },
-    {
-        ID: "eld@yahoo.gmai1",
-        notes: [
-            {
-                noteID: "0", x: "8.2762", y: "9.8712",
-                background: "#FFE5D1", color: "#713916",
-                text: [
-                    {title: "Set quarterly goals", size: "0.6206896551724138rem"},
-                    {content: "Define a few measurable outcomes for the next three months.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "10rem", status: "none",
-                pin: {existence: "", color: ""}
-            },
-            {
-                noteID: "1", x: "26.8389", y: "71.3564",
-                background: "#E5E9FF", color: "#2D376A",
-                text: [
-                    {title: "Identify customer needs", size: "0.6206896551724138rem"},
-                    {content: "Talk to potential users about their biggest difficulties.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "12rem", status: "none",
-                pin: {existence: "", color: ""}
-            },
-            {
-                noteID: "2", x: "51.5962", y: "9.4748",
-                background: "#FFF0B3", color: "#44320C",
-                text: [
-                    {title: "Review the launch checklist", size: "0.6206896551724138rem"},
-                    {content: "Verify the product, support information, and announcements.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "10rem", status: "none",
-                pin: {existence: "", color: ""}
-            }
-        ]
-    },
-    {
-        ID: "eld@yahoo.gmai2",
-        notes: [
-            {
-                noteID: "0", x: "49.7334", y: "42.7844",
-                background: "#D9F4EA", color: "#164B3C",
-                text: [
-                    {title: "Schedule a review", size: "0.6206896551724138rem"},
-                    {content: "Set a time to check progress and resolve open questions.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "11rem", status: "none",
-                pin: {existence: "", color: ""}
-            },
-            {
-                noteID: "1", x: "26.0971", y: "67.3966",
-                background: "#FCE0E7", color: "#682B43",
-                text: [
-                    {title: "Build the first version", size: "0.6206896551724138rem"},
-                    {content: "Implement the essentials before adding optional improvements.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "9rem", status: "none",
-                pin: {existence: "yes", color: "#D99125"}
-            },
-            {
-                noteID: "2", x: "10.8278", y: "8.1472",
-                background: "#E5E9FF", color: "#2D376A",
-                text: [
-                    {title: "Run the test cases", size: "0.6206896551724138rem"},
-                    {content: "Record expected outcomes and investigate any failures.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "12rem", status: "none",
-                pin: {existence: "yes", color: "#D99125"}
-            },
-            {
-                noteID: "3", x: "58.9168", y: "70.9886",
-                background: "#D9F4EA", color: "#164B3C",
-                text: [
-                    {title: "Document the changes", size: "0.6206896551724138rem"},
-                    {content: "Write down what changed and why it was necessary.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "8rem", status: "none",
-                pin: {existence: "yes", color: "#D99125"}
-            }
-        ]
-    },
-    {
-        ID: "eld@yahoo.gmai3",
-        notes: [
-            {
-                noteID: "0", x: "8.1854", y: "10.3316",
-                background: "#E5E9FF", color: "#2D376A",
-                text: [
-                    {title: "Write down assumptions", size: "0.6206896551724138rem"},
-                    {content: "Separate known facts from estimates that need verification.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "11rem", status: "none",
-                pin: {existence: "yes", color: "#D99125"}
-            },
-            {
-                noteID: "1", x: "24.8822", y: "70.2186",
-                background: "#FFF0B3", color: "#44320C",
-                text: [
-                    {title: "Study potential risks", size: "0.6206896551724138rem"},
-                    {content: "Consider volatility, liquidity, and possible losses.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "11rem", status: "none",
-                pin: {existence: "", color: ""}
-            },
-            {
-                noteID: "2", x: "62.3214", y: "67.9767",
-                background: "#FFE5D1", color: "#713916",
-                text: [
-                    {title: "Review diversification", size: "0.6206896551724138rem"},
-                    {content: "Check whether the portfolio relies too heavily on one asset.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "8rem", status: "none",
-                pin: {existence: "yes", color: "#D99125"}
-            },
-            {
-                noteID: "3", x: "8.2140", y: "38.9489",
-                background: "#E9DEF7", color: "#563371",
-                text: [
-                    {title: "Set a long-term objective", size: "0.6206896551724138rem"},
-                    {content: "Define the time horizon and the purpose of the investment.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "8rem", status: "none",
-                pin: {existence: "", color: ""}
-            },
-            {
-                noteID: "4", x: "50.4997", y: "11.2734",
-                background: "#FFF0B3", color: "#44320C",
-                text: [
-                    {title: "Track performance periodically", size: "0.6206896551724138rem"},
-                    {content: "Review progress on a schedule rather than reacting daily.", size: "0.3620689655172414rem"}
-                ],
-                width: "7rem", height: "10rem", status: "none",
-                pin: {existence: "", color: ""}
-            }
-        ]
-    }
+  { ID: "mira.chen@example.com1", notes: [
+    makeNote("0", "8.6208", "13.4021", "#E2EFFB", "#214C6B", "Choose the chassis", "Compare the frame materials and leave room for the battery.", "7rem", "8rem", true),
+    makeNote("1", "53.4792", "17.0971", "#DFF5EF", "#255A4A", "Wire the sensors", "Connect the distance sensors and label each cable.", "7.5rem", "9rem", true),
+    makeNote("2", "13.8954", "58.8603", "#E5F4DA", "#3E602C", "Calibrate the motors", "Tune wheel speeds so the robot travels straight.", "6.75rem", "10rem", false),
+    makeNote("3", "55.0210", "64.3177", "#E5EAFE", "#344879", "Run the obstacle course", "Time three practice runs and record the errors.", "7.25rem", "8rem", true),
+  ] },
+  { ID: "mira.chen@example.com2", notes: [
+    makeNote("0", "6.2213", "11.9476", "#FFF2C8", "#664D1C", "Set a weekly schedule", "Reserve four short study sessions each week.", "7.5rem", "9rem", true),
+    makeNote("1", "53.1754", "11.1951", "#E2EFFB", "#214C6B", "Build a vocabulary list", "Collect practical phrases for everyday situations.", "6.75rem", "10rem", true),
+    makeNote("2", "30.4465", "41.2885", "#DFF5EF", "#255A4A", "Listen every day", "Use short podcasts and repeat unfamiliar sentences.", "7.25rem", "8rem", false),
+    makeNote("3", "12.0426", "68.4133", "#E5F4DA", "#3E602C", "Practice conversations", "Find a partner and focus on speaking naturally.", "7rem", "9rem", true),
+    makeNote("4", "54.9145", "70.2733", "#E5EAFE", "#344879", "Review monthly progress", "Check listening and speaking improvements.", "7.5rem", "10rem", false),
+  ] },
+  { ID: "leo.martin@example.com1", notes: [
+    makeNote("0", "13.4186", "15.1505", "#FBE8D8", "#76482E", "Measure the room", "Record wall dimensions and possible desk locations.", "6.75rem", "10rem", false),
+    makeNote("1", "49.7195", "39.6667", "#FFF2C8", "#664D1C", "Plan acoustic treatment", "Reduce echoes with curtains and soft wall panels.", "7.25rem", "8rem", true),
+    makeNote("2", "11.8072", "65.6577", "#E2EFFB", "#214C6B", "Test the microphone", "Compare recordings before purchasing extra equipment.", "7rem", "9rem", true),
+  ] },
+  { ID: "sara.patel@example.com1", notes: [
+    makeNote("0", "8.5906", "14.3080", "#FCE9ED", "#743548", "Survey the sunlight", "Observe morning and afternoon light on the balcony.", "7.25rem", "8rem", true),
+    makeNote("1", "54.9644", "13.5992", "#FBE8D8", "#76482E", "Select herbs", "Choose basil, mint, and rosemary for the available space.", "7rem", "9rem", true),
+    makeNote("2", "11.1244", "60.4420", "#FFF2C8", "#664D1C", "Prepare containers", "Add drainage holes and a lightweight potting mix.", "7.5rem", "10rem", false),
+    makeNote("3", "52.8152", "65.4362", "#E2EFFB", "#214C6B", "Plan watering", "Create a simple routine and check soil moisture.", "6.75rem", "8rem", true),
+  ] },
+  { ID: "sara.patel@example.com2", notes: [
+    makeNote("0", "6.6266", "10.8368", "#F0E8FB", "#5B387E", "Define user stories", "List the main reasons someone would use the app.", "7rem", "9rem", true),
+    makeNote("1", "55.7731", "9.7540", "#FCE9ED", "#743548", "Sketch onboarding", "Keep the first-run experience short and clear.", "7.5rem", "10rem", true),
+    makeNote("2", "29.9545", "40.6108", "#FBE8D8", "#76482E", "Build a prototype", "Implement habit creation and daily check-ins.", "6.75rem", "8rem", false),
+    makeNote("3", "8.0974", "67.0829", "#FFF2C8", "#664D1C", "Run usability tests", "Watch three people finish common tasks.", "7.25rem", "9rem", true),
+    makeNote("4", "59.3075", "67.0836", "#E2EFFB", "#214C6B", "Prepare release notes", "Summarize new features and known limitations.", "7rem", "10rem", false),
+  ] },
+  { ID: "sara.patel@example.com3", notes: [
+    makeNote("0", "9.0663", "11.4981", "#E5EAFE", "#344879", "Pick a trail", "Check length, difficulty, elevation, and access rules.", "7.5rem", "10rem", true),
+    makeNote("1", "55.2871", "14.8904", "#F0E8FB", "#5B387E", "Check the forecast", "Review rain and temperature before departure.", "6.75rem", "8rem", true),
+    makeNote("2", "12.2705", "58.7904", "#FCE9ED", "#743548", "Pack essentials", "Bring water, a map, snacks, and a first-aid kit.", "7.25rem", "9rem", false),
+    makeNote("3", "55.0335", "65.9915", "#FBE8D8", "#76482E", "Arrange transport", "Confirm travel options and the return journey.", "7rem", "10rem", false),
+  ] },
+  { ID: "sara.patel@example.com4", notes: [
+    makeNote("0", "6.8992", "11.3972", "#E5F4DA", "#3E602C", "Book the venue", "Find a bright room with tables and enough chairs.", "6.75rem", "8rem", true),
+    makeNote("1", "52.8075", "16.1554", "#E5EAFE", "#344879", "Invite facilitators", "Ask local artists to lead short practical exercises.", "7.25rem", "9rem", true),
+    makeNote("2", "12.0724", "60.4483", "#F0E8FB", "#5B387E", "Prepare supplies", "Count paper, pencils, erasers, and spare materials.", "7rem", "10rem", false),
+    makeNote("3", "51.6175", "65.8045", "#FCE9ED", "#743548", "Open registration", "Set a realistic attendance limit and collect RSVPs.", "7.5rem", "8rem", true),
+  ] },
+  { ID: "noah.kim@example.com1", notes: [
+    makeNote("0", "8.9479", "11.9664", "#DFF5EF", "#255A4A", "Choose a reading goal", "Set a monthly target that fits the schedule.", "7.25rem", "9rem", true),
+    makeNote("1", "53.3720", "9.5132", "#E5F4DA", "#3E602C", "Make a reading list", "Mix fiction, history, and practical nonfiction.", "7rem", "10rem", false),
+    makeNote("2", "31.5121", "41.1203", "#E5EAFE", "#344879", "Keep reading notes", "Write one takeaway after each completed chapter.", "7.5rem", "8rem", true),
+    makeNote("3", "9.6601", "67.5848", "#F0E8FB", "#5B387E", "Review favorite books", "Pick a few titles to recommend to friends.", "6.75rem", "9rem", false),
+    makeNote("4", "56.3378", "66.9427", "#FCE9ED", "#743548", "Celebrate milestones", "Mark the halfway point and year-end results.", "7.25rem", "10rem", false),
+  ] },
+  { ID: "noah.kim@example.com2", notes: [
+    makeNote("0", "9.6826", "12.7812", "#E2EFFB", "#214C6B", "Select the best shots", "Choose strong photos with a consistent visual style.", "7rem", "10rem", true),
+    makeNote("1", "52.5074", "16.5611", "#DFF5EF", "#255A4A", "Edit color balance", "Keep exposure and white balance consistent.", "7.5rem", "8rem", true),
+    makeNote("2", "10.1022", "60.3278", "#E5F4DA", "#3E602C", "Write photo captions", "Describe the subject and the story behind each image.", "6.75rem", "9rem", false),
+    makeNote("3", "54.4199", "64.7758", "#E5EAFE", "#344879", "Publish the gallery", "Check image loading and layout on different screens.", "7.25rem", "10rem", true),
+  ] },
+  { ID: "noah.kim@example.com3", notes: [
+    makeNote("0", "10.1345", "11.8015", "#FFF2C8", "#664D1C", "Research foot traffic", "Visit possible locations during busy hours.", "7.5rem", "8rem", true),
+    makeNote("1", "53.7230", "13.0768", "#E2EFFB", "#214C6B", "Test drink recipes", "Choose three reliable drinks and standardize portions.", "6.75rem", "9rem", false),
+    makeNote("2", "29.5403", "38.4927", "#DFF5EF", "#255A4A", "Estimate costs", "Calculate ingredient, packaging, and rental expenses.", "7.25rem", "10rem", true),
+    makeNote("3", "12.4104", "68.0606", "#E5F4DA", "#3E602C", "Design the signage", "Keep the menu readable from a distance.", "7rem", "8rem", false),
+    makeNote("4", "57.7815", "66.3115", "#E5EAFE", "#344879", "Gather customer feedback", "Ask visitors what worked and what to improve.", "7.5rem", "9rem", true),
+  ] },
 ];
 
-const plansLinks =[
-    {
-        ID: "wukong.dargon@gmail.com1",
-        links: [
-            { nID: "0", dID: "1", color: "#530303" },
-            { nID: "1", dID: "2", color: "#3A7D44" },
-            { nID: "0", dID: "2", color: "#4678B5" },
-            { nID: "0", dID: "3", color: "#B06747" },
-            { nID: "1", dID: "3", color: "#8B5BB7" }
-        ]
-    },
-    {
-        ID: "wukong.dargon@gmail.com2",
-        links: [
-            { nID: "2", dID: "4", color: "#530303" },
-            { nID: "0", dID: "1", color: "#4678B5" },
-            { nID: "1", dID: "3", color: "#8B5BB7" },
-            { nID: "3", dID: "4", color: "#3A7D44" },
-            { nID: "0", dID: "2", color: "#B06747" }
-        ]
-    },
-    {
-        ID: "abc@gmail.com1",
-        links: [
-            { nID: "0", dID: "2", color: "#4678B5" },
-            { nID: "0", dID: "1", color: "#530303" },
-            { nID: "1", dID: "2", color: "#3A7D44" }
-        ]
-    },
-    {
-        ID: "cbb@alo.com1",
-        links: [
-            { nID: "0", dID: "2", color: "#530303" },
-            { nID: "0", dID: "4", color: "#4678B5" },
-            { nID: "4", dID: "3", color: "#3A7D44" },
-            { nID: "3", dID: "1", color: "#8B5BB7" },
-            { nID: "2", dID: "1", color: "#B06747" }
-        ]
-    },
-    {
-        ID: "cbb@alo.com2",
-        links: [
-            { nID: "0", dID: "1", color: "#8B5BB7" },
-            { nID: "1", dID: "2", color: "#4678B5" },
-            { nID: "2", dID: "3", color: "#3A7D44" },
-            { nID: "3", dID: "0", color: "#B06747" }
-        ]
-    },
-    {
-        ID: "cbb@alo.com3",
-        links: [
-            { nID: "0", dID: "2", color: "#3A7D44" },
-            { nID: "0", dID: "1", color: "#530303" },
-            { nID: "1", dID: "3", color: "#4678B5" },
-            { nID: "3", dID: "4", color: "#8B5BB7" },
-            { nID: "4", dID: "2", color: "#B06747" }
-        ]
-    },
-    {
-        ID: "cbb@alo.com4",
-        links: [
-            { nID: "3", dID: "0", color: "#530303" },
-            { nID: "3", dID: "1", color: "#4678B5" },
-            { nID: "0", dID: "1", color: "#8B5BB7" },
-            { nID: "1", dID: "2", color: "#3A7D44" },
-            { nID: "2", dID: "3", color: "#B06747" }
-        ]
-    },
-    {
-        ID: "eld@yahoo.gmai1",
-        links: [
-            { nID: "0", dID: "1", color: "#8B5BB7" },
-            { nID: "1", dID: "2", color: "#3A7D44" },
-            { nID: "0", dID: "2", color: "#4678B5" }
-        ]
-    },
-    {
-        ID: "eld@yahoo.gmai2",
-        links: [
-            { nID: "1", dID: "2", color: "#530303" },
-            { nID: "2", dID: "3", color: "#4678B5" },
-            { nID: "0", dID: "1", color: "#3A7D44" },
-            { nID: "0", dID: "3", color: "#8B5BB7" }
-        ]
-    },
-    {
-        ID: "eld@yahoo.gmai3",
-        links: [
-            { nID: "0", dID: "2", color: "#8B5BB7" },
-            { nID: "0", dID: "1", color: "#530303" },
-            { nID: "1", dID: "3", color: "#4678B5" },
-            { nID: "3", dID: "4", color: "#3A7D44" },
-            { nID: "4", dID: "2", color: "#B06747" }
-        ]
-    }
+const plansLinks = [
+  { ID: "mira.chen@example.com1", links: [
+    { nID: "0", dID: "1", color: "#347A92" },
+    { nID: "1", dID: "2", color: "#8354AD" },
+    { nID: "2", dID: "3", color: "#AC527E" },
+    { nID: "0", dID: "3", color: "#4869B3" },
+    { nID: "0", dID: "2", color: "#347A92" },
+  ] },
+  { ID: "mira.chen@example.com2", links: [
+    { nID: "0", dID: "1", color: "#B66D41" },
+    { nID: "1", dID: "2", color: "#347F60" },
+    { nID: "2", dID: "3", color: "#9D7D30" },
+    { nID: "3", dID: "4", color: "#B14D4D" },
+    { nID: "0", dID: "4", color: "#B66D41" },
+    { nID: "0", dID: "2", color: "#347F60" },
+  ] },
+  { ID: "leo.martin@example.com1", links: [
+    { nID: "0", dID: "1", color: "#8354AD" },
+    { nID: "1", dID: "2", color: "#AC527E" },
+    { nID: "0", dID: "2", color: "#4869B3" },
+  ] },
+  { ID: "sara.patel@example.com1", links: [
+    { nID: "0", dID: "1", color: "#347F60" },
+    { nID: "1", dID: "2", color: "#9D7D30" },
+    { nID: "2", dID: "3", color: "#B14D4D" },
+    { nID: "0", dID: "3", color: "#B66D41" },
+    { nID: "0", dID: "2", color: "#347F60" },
+  ] },
+  { ID: "sara.patel@example.com2", links: [
+    { nID: "0", dID: "1", color: "#AC527E" },
+    { nID: "1", dID: "2", color: "#4869B3" },
+    { nID: "2", dID: "3", color: "#347A92" },
+    { nID: "3", dID: "4", color: "#8354AD" },
+    { nID: "0", dID: "4", color: "#AC527E" },
+    { nID: "0", dID: "2", color: "#4869B3" },
+  ] },
+  { ID: "sara.patel@example.com3", links: [
+    { nID: "0", dID: "1", color: "#9D7D30" },
+    { nID: "1", dID: "2", color: "#B14D4D" },
+    { nID: "2", dID: "3", color: "#B66D41" },
+    { nID: "0", dID: "3", color: "#347F60" },
+    { nID: "0", dID: "2", color: "#9D7D30" },
+  ] },
+  { ID: "sara.patel@example.com4", links: [
+    { nID: "0", dID: "1", color: "#4869B3" },
+    { nID: "1", dID: "2", color: "#347A92" },
+    { nID: "2", dID: "3", color: "#8354AD" },
+    { nID: "0", dID: "3", color: "#AC527E" },
+    { nID: "0", dID: "2", color: "#4869B3" },
+  ] },
+  { ID: "noah.kim@example.com1", links: [
+    { nID: "0", dID: "1", color: "#B14D4D" },
+    { nID: "1", dID: "2", color: "#B66D41" },
+    { nID: "2", dID: "3", color: "#347F60" },
+    { nID: "3", dID: "4", color: "#9D7D30" },
+    { nID: "0", dID: "4", color: "#B14D4D" },
+    { nID: "0", dID: "2", color: "#B66D41" },
+  ] },
+  { ID: "noah.kim@example.com2", links: [
+    { nID: "0", dID: "1", color: "#347A92" },
+    { nID: "1", dID: "2", color: "#8354AD" },
+    { nID: "2", dID: "3", color: "#AC527E" },
+    { nID: "0", dID: "3", color: "#4869B3" },
+    { nID: "0", dID: "2", color: "#347A92" },
+  ] },
+  { ID: "noah.kim@example.com3", links: [
+    { nID: "0", dID: "1", color: "#B66D41" },
+    { nID: "1", dID: "2", color: "#347F60" },
+    { nID: "2", dID: "3", color: "#9D7D30" },
+    { nID: "3", dID: "4", color: "#B14D4D" },
+    { nID: "0", dID: "4", color: "#B66D41" },
+    { nID: "0", dID: "2", color: "#347F60" },
+  ] },
 ];
 
-export default {accounts,usersData,plans,plansNotes,plansLinks}
+export default { accounts, usersData, plans, plansNotes, plansLinks };
