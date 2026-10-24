@@ -29,12 +29,14 @@ document.querySelector(".howtouse").addEventListener("click",()=>{
 const rawCurrentAccount = localStorage.getItem("currentAccount")
 if (!rawCurrentAccount) {
     document.querySelector('.main-btn').setAttribute("href","../function-page/function-page.html")
+    document.querySelector('.workplace').setAttribute("href","../function-page/function-page.html")
     document.querySelector('.account-center').style.display='none'
     document.querySelector('.storage').style.display='none'
     document.querySelector('.log-out').style.display='none'
-} else if (rawCurrentAccount.length!=0) {
+} else if (rawCurrentAccount) {
     const trueCurrentAccount = JSON.parse(rawCurrentAccount)
-    document.querySelector('.main-btn').setAttribute("href","../select-workplace/select-workplace.html")
+    document.querySelector('.main-btn').setAttribute("href","../plans-management/plans-management.html")
+    document.querySelector('.workplace').setAttribute("href","../select-workplace/select-workplace.html")
     document.querySelector('.account-center').style.display='block'
     document.querySelector('.storage').style.display='block'
     document.querySelector('.log-out').style.display='block'
