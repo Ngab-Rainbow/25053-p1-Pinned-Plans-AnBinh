@@ -713,21 +713,40 @@ document.querySelector('.export').onclick = exportBoard
 async function exportBoard() {
     const board = document.querySelector(".board");
 
-    const canvas = await html2canvas(board, {
-        backgroundColor: null,
-        scale: 2,
-        useCORS: true,
-        ignoreElements: button =>
-            button.classList?.contains("resize-area") ||
-            button.classList?.contains("resize-all")
-    });
+    const originalZoom = board.style.getPropertyValue("zoom");
+    const originalPriority = board.style.getPropertyPriority("zoom");
 
-    const link = document.createElement("a");
+    try {
+        board.style.setProperty("zoom", "1", "important");
 
-    link.download = "Bulletin-Plan.png";
-    link.href = canvas.toDataURL("image/png");
+        await document.fonts.ready;
+        await new Promise(resolve => requestAnimationFrame(resolve));
 
-    link.click();
+        const canvas = await html2canvas(board, {
+            backgroundColor: null,
+            scale: 2,
+            useCORS: true,
+            width: board.offsetWidth,
+            height: board.offsetHeight,
+            windowWidth: Math.max(window.innerWidth, board.offsetWidth + 40)
+        });
+
+        const link = document.createElement("a");
+        link.download = "Bulletin-Plan.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+
+    } finally {
+        if (originalZoom) {
+            board.style.setProperty(
+                "zoom",
+                originalZoom,
+                originalPriority
+            );
+        } else {
+            board.style.removeProperty("zoom");
+        }
+    }
 }
 
 
