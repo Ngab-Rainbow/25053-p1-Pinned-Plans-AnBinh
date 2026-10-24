@@ -26,7 +26,7 @@ if (!rawCurrentAccount) {
     document.querySelector('.account-center').style.display='none'
     document.querySelector('.storage').style.display='none'
     document.querySelector('.log-out').style.display='none'
-} else if (rawCurrentAccount.length!=0) {
+} else if (rawCurrentAccount) {
     const trueCurrentAccount = JSON.parse(rawCurrentAccount)
     document.querySelector('.main-btn').setAttribute("href","../select-workplace/select-workplace.html")
     document.querySelector('.workplace').setAttribute("href","../select-workplace/select-workplace.html")
