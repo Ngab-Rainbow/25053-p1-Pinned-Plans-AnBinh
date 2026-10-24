@@ -26,6 +26,16 @@ if (rawTotalPlans) {
     totalPlans.textContent =`0`
 }
 
+const totalNotes = document.querySelector(".notes")
+const rawplansNotes = localStorage.getItem("plansNotes")
+const planNotes = JSON.parse(rawplansNotes)
+let n= 0;
+planNotes.forEach(plan=> {
+    if (plan.ID.includes(currentAcount.email)) {
+        n+=plan.notes.length
+    }
+ })
+totalNotes.textContent=`${n}`
 const inputName = document.querySelector(".input-name")
 const inputNationality = document.querySelector(".input-nationality")
 const inputAge = document.querySelector(".input-age")
@@ -180,7 +190,7 @@ document.querySelector(".confirm-change").addEventListener("click",()=>{
         inputOldPassword.style.border="2px solid red"
         return
     }
-    if (inputNewPassword.value.trim()<8) {
+    if (inputNewPassword.value.trim().length<8) {
         const notificationForPassword = document.createElement("p")
         notificationForPassword.setAttribute("class", "notification-error-for-password")
         notificationForPassword.textContent="*Your password must be more than 8 characters!"
@@ -213,12 +223,13 @@ document.querySelector(".confirm-change").addEventListener("click",()=>{
     inputNewPassword.value=""
     inputOldPassword.value=""
 })
+
 document.querySelector(".log-out-btn").addEventListener("click",()=>{
     localStorage.setItem("currentAccount","")
     localStorage.setItem("currentUserData","")
     localStorage.setItem("currentUserPlans","")
     localStorage.setItem("currentPlan","")
+    localStorage.setItem("currentPlanNotes","")
+    localStorage.setItem("currentPlanLinks",'')
     window.location.href = "../log-in/log-in.html"
 })
-
-

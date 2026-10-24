@@ -1,6 +1,10 @@
 import plansBriefManagement from "../JS/brief-plans-information.js"
 
-
+window.addEventListener("pageshow", (event) => {
+    if (event.persisted) {
+        window.location.reload();
+    }
+});
 const rawCurrentUserPlans = localStorage.getItem("currentUserPlans")
 if (!rawCurrentUserPlans) {
     window.location.href = "../select-workplace/select-workplace.html"
@@ -58,6 +62,17 @@ function displayPlan() {
                 break;
         }
         previewBoard.style.backgroundColor = `${plan.background}`
+        function isColor(value) {
+            return CSS.supports("color", value);
+        }
+        if (isColor(plan.background)) {
+            previewBoard.style.backgroundColor = `${plan.background}`
+        } else {
+            previewBoard.style.backgroundImage = `url(${plan.background})`
+            previewBoard.style.backgroundRepeat = `no-repeat`
+            previewBoard.style.backgroundSize = `cover`
+            previewBoard.style.backgroundPosition =`center`
+        }
         if (plan.borderColor) {
             previewBoard.style.border = `0.4rem solid ${plan.borderColor}`
         }
@@ -98,7 +113,7 @@ function menuTools() {
 
     if ((/android|iphone|ipad|ipod/i.test(navigator.userAgent.toLocaleLowerCase())) || (navigator.maxTouchPoints > 0)) {
         getAllPlans.forEach(planContainer => {
-        planContainer.addEventListener("click", mouse => {
+        planContainer.onclick= mouse => {
             const openMenu = setTimeout(() => {
                 planID = planContainer.dataset.planID
                 menu.classList.add("activated")
@@ -113,11 +128,11 @@ function menuTools() {
                 menu.style.left = `${mouse.clientX}px`
                 menu.style.top = `${mouse.clientY}px`
             }, 50)
-        })
+        }
     })
     } else {
         getAllPlans.forEach(planContainer => {
-            planContainer.addEventListener("contextmenu", mouse => {
+            planContainer.oncontextmenu=(mouse) => {
                 planID = planContainer.dataset.planID
                 mouse.preventDefault()
                 const rawPlans = localStorage.getItem("currentUserPlans")
@@ -131,19 +146,19 @@ function menuTools() {
                 menu.classList.add("activated")
                 menu.style.left = `${mouse.clientX}px`
                 menu.style.top = `${mouse.clientY}px`
-            })
+            }
         })
         getAllPlans.forEach(planContainer => {
-            planContainer.addEventListener("click", plan => {
+            planContainer.onclick= plan => {
                 planID = planContainer.dataset.planID
                 const setCurrentPlan = new plansBriefManagement()
                 setCurrentPlan.setCurrentPlan(planID)
-                window.location.href = "../plans-management/plans-management.html"
+                window.location.href = "../function-page/function-page.html"
                 return
-            })
+            }
         })
     }
-    document.querySelector(".view-plan").addEventListener("click", () => {
+    document.querySelector(".view-plan").onclick = () => {
         info.classList.add("view-activated")
         document.querySelector(".info").style.display = 'block'
         document.querySelector(".edit").style.display = 'none'
@@ -167,8 +182,8 @@ function menuTools() {
                 break;
             }
         }
-    })
-    document.querySelector(".edit-plan").addEventListener("click", () => {
+    }
+    document.querySelector(".edit-plan").onclick= () => {
         info.classList.add("view-activated")
         document.querySelector(".info").style.display = 'none'
         document.querySelector(".edit").style.display = 'block'
@@ -185,8 +200,7 @@ function menuTools() {
                 return
             }
         })
-        document.querySelector(".confirm").addEventListener("click", () => {
-            console.log("ok")
+        document.querySelector(".confirm").onclick= () => {
             const notificationCount = document.querySelector(".error")
             if (notificationCount) {
                 notificationCount.remove()
@@ -224,8 +238,8 @@ function menuTools() {
             adjustInfo.adjustPlanInfo(planID, inputName.value, inputDesc.value, updatedDate)
             info.classList.remove("view-activated")
             window.location.href = "../plans-management/plans-management.html"
-        })
-        document.querySelector(".reset").addEventListener("click", () => {
+        }
+        document.querySelector(".reset").onclick= () => {
             plans.forEach(plan => {
                 if (plan.ID === planID) {
                     inputName.value = plan.planName
@@ -234,10 +248,10 @@ function menuTools() {
                 }
             })
 
-        })
+        }
 
-    })
-    document.querySelector(".delete-plan").addEventListener("click", () => {
+    }
+    document.querySelector(".delete-plan").onclick= () => {
         info.classList.add("view-activated")
         document.querySelector(".info").style.display = 'none'
         document.querySelector(".edit").style.display = 'none'
@@ -249,25 +263,28 @@ function menuTools() {
                 document.querySelector(".plan-Name").textContent = `->Plan's name: ${plan.planName}`
             }
         })
-        document.querySelector(".no").addEventListener("click", () => {
+        document.querySelector(".no").onclick= () => {
             info.classList.remove("view-activated")
-        })
-        document.querySelector(".yes").addEventListener("click", () => {
+        }
+        document.querySelector(".yes").onclick= () => {
             const deletePlan = new plansBriefManagement()
             deletePlan.removePlan(planID)
             info.classList.remove("view-activated")
             window.location.href = "../plans-management/plans-management.html"
-        })
-    })
-    document.querySelector(".open-plan").addEventListener("click", () => {
+        }
+    }
+    document.querySelector(".open-plan").onclick= () => {
         const setCurrentPlan = new plansBriefManagement()
         setCurrentPlan.setCurrentPlan(planID)
-        window.location.href = "../plans-management/plans-management.html"
-    })
-    window.addEventListener("click", () => {
+        window.location.href = "../function-page/function-page.html"
+    }
+    window.onclick= () => {
         menu.classList.remove("activated")
-    })
-    document.querySelector(".close").addEventListener("click", () => {
+    }
+    window.onblur = () => {
+        menu.classList.remove("activated")
+    }
+    document.querySelector(".close").onclick= () => {
         info.classList.remove("view-activated")
-    })
+    }
 }

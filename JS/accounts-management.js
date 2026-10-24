@@ -10,10 +10,12 @@ class basicAccountManagement {
     addingAccount() {
         accounts.push({name: this.name, email: this.email, password: this.password})
         localStorage.setItem("accounts", JSON.stringify(accounts) )
+        localStorage.setItem("currentPlanNotes","")
     }
     setCurrentAccount() {
         localStorage.setItem("currentAccount",JSON.stringify({name: this.name, email: this.email, password: this.password}))
         window.location.href = "../account-center/account-center.html"
+        localStorage.setItem("currentPlanNotes","")
     }
     changePassword(updation) {
         localStorage.setItem("currentAccount",JSON.stringify(updation))
